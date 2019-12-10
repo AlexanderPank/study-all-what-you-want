@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background: #ccc;
+  margin: 5px auto;
+}
+
+
+
+
+.padding16{
+  padding: 16px;
+}

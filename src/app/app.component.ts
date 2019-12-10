@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'study-all-what-you-want';
+  currentName = 'Чтобы помнить';
+
 }
