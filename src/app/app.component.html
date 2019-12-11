@@ -1,8 +1,58 @@
-<div class="root">
+<div class="root" #rootElement id="rootElement">
+  <div class="mainMenu"    id="menuList">
+    <div class="menuList" >
+      <div class="logo">
+        <a href="#">MeMemory</a>
+      </div>
 
-  <app-top-bar></app-top-bar>
+     <main-menu-item
+      [title]="'Редактор категорий'"
+      [href]="'edit-category-list'"
+      [icon]="'fa-archive'"
+      (selected)="this.hideMainMenu()"
+     >
+     </main-menu-item>
 
+      <main-menu-item
+        [title]="'Редактор значений'"
+        [href]="'edit-value-list'"
+        [icon]="'fa-anchor'"
+        (selected)="this.hideMainMenu()"
+      >
+      </main-menu-item>
+
+      <main-menu-item
+        [title]="'Настройки'"
+        [href]="'settings'"
+        [icon]="'fa-cog'"
+        (selected)="this.hideMainMenu()"
+      >
+      </main-menu-item>
+
+      <main-menu-item
+        [title]="'О програме'"
+        [href]="'about'"
+        [icon]="'fa-star'"
+        (selected)="this.hideMainMenu()"
+      >
+      </main-menu-item>
+
+      <main-menu-item
+        [title]="'Выход'"
+        [href]="'about'"
+        [icon]="'fa-sign-out'"
+        (selected)="this.hideMainMenu()"
+      >
+      </main-menu-item>
+
+    </div>
+  </div>
+<div id="container">
+  <app-top-bar (menuState)="this.changeMainMenuState()"></app-top-bar>
+  <div  class="mask-content" #maskContent id="maskContent" ></div>
   <div class="container padding16">
     <router-outlet></router-outlet>
   </div>
+</div>
+  <div class="footer"></div>
 </div>

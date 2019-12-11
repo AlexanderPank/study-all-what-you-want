@@ -8,19 +8,26 @@ import { AddElementFormComponent } from './add-element-form/add-element-form.com
 import { MainFormComponent } from './main-form/main-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ExaminationFormComponent } from './examination-form/examination-form.component';
+import { CardComponent } from './elements/card.component';
+import {MainMenuItemComponent} from './elements/main-menu-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     AddElementFormComponent,
-    MainFormComponent
+    MainFormComponent,
+    ExaminationFormComponent,
+    CardComponent,
+    MainMenuItemComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: MainFormComponent, data: {testTitle: 'Memorable Memory'}  },
-      { path: 'add-element/', component: AddElementFormComponent, data: {testTitle: '<< Назад'}  }
+      { path: 'add-element/', component: AddElementFormComponent, data: {testTitle: '<< Назад'}  },
+      { path: 'exam/:categoryId', component: ExaminationFormComponent, data: {testTitle: '<< Назад'}  }
     ]),
     HttpClientModule,
     FormsModule

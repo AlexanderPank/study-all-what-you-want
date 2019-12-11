@@ -26,10 +26,16 @@ export class CategoryService {
       .pipe(tap(todos=> this.todosArray = todos)) */
     let listCat: Category[] = [] ;
 
-    let  element: Category =   {id:1,title: 'Category 0', description: 'First category', date: new Date(), countElement: 5 }; listCat.push(element);
-                    element =  {id:2,title: 'Category 1', description: 'First category', date: new Date(), countElement: 5 }; listCat.push(element);
-                    element =  {id:3,title: 'Category 2', description: 'First category', date: new Date(), countElement: 5 }; listCat.push(element);
-                    element =  {id:4,title: 'Category 3', description: 'First category', date: new Date(), countElement: 5 }; listCat.push(element);
+    let  element: Category =   {id:1,title: 'Category 0', description: 'First category', date: new Date(), countElement: 35 }; listCat.push(element);
+                    element =  {id:2,title: 'Категория 1', description: 'First category', date: new Date(), countElement: 444 }; listCat.push(element);
+                    element =  {id:3,title: 'Category 2', description: 'Тест описания категории Тест описания категории Тест описания категории Тест описания категории Тест описания категории ', date: new Date(), countElement: 689 }; listCat.push(element);
+                    element =  {id:3,title: 'Category 2', description: 'Тест описания категории Тест описания категории Тест описания категории Тест описания категории Тест описания категории ', date: new Date(), countElement: 689 }; listCat.push(element);
+                    element =  {id:3,title: 'Category 2', description: 'Тест описания категории Тест описания категории Тест описания категории Тест описания категории Тест описания категории ', date: new Date(), countElement: 689 }; listCat.push(element);
+                    element =  {id:3,title: 'Category 2', description: 'Тест описания категории Тест описания категории Тест описания категории Тест описания категории Тест описания категории ', date: new Date(), countElement: 689 }; listCat.push(element);
+                    element =  {id:3,title: 'Category 2', description: 'Тест описания категории Тест описания категории Тест описания категории Тест описания категории Тест описания категории ', date: new Date(), countElement: 689 }; listCat.push(element);
+                    element =  {id:3,title: 'Category 2', description: 'Тест описания категории Тест описания категории Тест описания категории Тест описания категории Тест описания категории ', date: new Date(), countElement: 689 }; listCat.push(element);
+                    element =  {id:3,title: 'Category 2', description: 'Тест описания категории Тест описания категории Тест описания категории Тест описания категории Тест описания категории ', date: new Date(), countElement: 689 }; listCat.push(element);
+                    element =  {id:4,title: 'Category 3', description: 'First category', date: new Date(), countElement: 7 }; listCat.push(element);
     this.listOfCategory = listCat;
     return  of(listCat)  ;
 
