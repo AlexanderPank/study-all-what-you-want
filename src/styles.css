@@ -1,12 +1,137 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('./fonts/fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('./fonts/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
+       url('./fonts/fonts/fontawesome-webfont.woff2') format('woff2'),
+       url('./fonts/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
+       url('./fonts/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
+       url('./fonts/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-cloud:before {
+  content: "\f0c2";
+}
+
+.fa-cog:before {
+  content: "\f013";
+}
+
+.fa-archive:before {
+  content: "\f187";
+}
+
+.fa-anchor:before {
+  content: "\f13d";
+}
+
+.fa-star:before {
+  content: "\f005";
+}
+
+.fa-life-ring:before {
+  content: "\f1cd";
+}
+
+
+.fa-sign-out:before {
+  content: "\f08b";
+}
+
+.fa-sign-in:before {
+  content: "\f090";
+}
+
 body{
   background: #ccc;
   margin: 5px auto;
 }
 
+.root{
+  padding-top: 30px;
+  max-height: 500px;
+  overflow: auto;
 
+}
+#container{
+
+  padding-bottom: 10px;
+  max-height: 480px;
+  overflow: auto;
+}
+#container::-webkit-scrollbar,
+#rootElement::-webkit-scrollbar
+{
+  display: none;
+}
 
 
 .padding16{
   padding: 16px;
+}
+
+.container{
+  min-height: 600px;
+}
+
+.mainMenu{
+  position: absolute;
+  top:62px;
+  width: 0px;
+  height: 100px;
+  max-width: 320px;
+  background: #fefefe;
+  border: 1px solid #ddd;
+  margin-right: 0px;
+
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  transition: width 0.5s;
+  /* определяем цвет фона панели */
+
+  overflow: hidden;
+  /* поверх других элементов */
+  z-index: 2000;
+  opacity: 0;
+
+}
+
+
+
+.logo{
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+
+
+/**
+ * Переключаемая боковая панель навигации
+ * выдвигающаяся по клику слева
+ */
+
+
+
+.mask-content {
+  display: block;
+  position: fixed;
+  top: 62px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.4);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .5s, visibility .5s;
+  transition: opacity .5s, visibility .5s;
 }
