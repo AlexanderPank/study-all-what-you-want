@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ExaminationFormComponent } from './examination-form/examination-form.component';
 import { CardComponent } from './elements/card.component';
 import {MainMenuItemComponent} from './elements/main-menu-item.component';
+import {LoginFormComponent} from './forms/login-form.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,16 @@ import {MainMenuItemComponent} from './elements/main-menu-item.component';
     MainFormComponent,
     ExaminationFormComponent,
     CardComponent,
-    MainMenuItemComponent
+    MainMenuItemComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: MainFormComponent, data: {testTitle: 'Memorable Memory'}  },
       { path: 'add-element/', component: AddElementFormComponent, data: {testTitle: '<< Назад'}  },
-      { path: 'exam/:categoryId', component: ExaminationFormComponent, data: {testTitle: '<< Назад'}  }
+      { path: 'exam/:categoryId', component: ExaminationFormComponent, data: {testTitle: '<< Назад'}  },
+      { path: 'login/:isRegister', component: LoginFormComponent, data: {testTitle: 'Memorable Memory'}  }
     ]),
     HttpClientModule,
     FormsModule

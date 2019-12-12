@@ -1,4 +1,5 @@
 import {Component, ElementRef, Input, ViewChild, OnInit} from '@angular/core';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   currentName = 'Чтобы помнить';
   showMenu = false;
 
-  constructor( ) {
+  constructor(private roter: Router) {
 
   }
 
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
     document.getElementById('rootElement').style.height = window.innerHeight - 50 + 'px'
     document.getElementById('container').style.maxHeight = window.innerHeight - 100 + 'px'
     document.getElementById('container').style.height = window.innerHeight - 50 + 'px'
+     this.roter.navigate(['login/enter'])
   }
 
   hideMainMenu(){

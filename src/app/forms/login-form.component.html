@@ -1,0 +1,112 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<h1 class="category-header">{{title}}</h1>
+<div class="lf-container" *ngIf="this.page=='enter'">
+    <div class="form-group">
+      <input required ngModel name="login" #login="ngModel" id="login" type="text" class="form-login" placeholder="Логин">
+    </div>
+  <div class="form-group"  *ngIf="!login.valid && login.touched">
+    <div class="alert alert-danger">Введите ваш логин</div>
+  </div>
+    <div class="form-group">
+      <input required ngModel name="password" #password="ngModel"  type="password" id="password" class="form-login" placeholder="Пароль">
+    </div>
+  <div class="form-group"  *ngIf="!password.valid && password.touched">
+    <div class="alert alert-danger">Введите ваш пароль</div>
+  </div>
+    <div class="form-group">
+      <button class="btn btn-primary" [disabled]="login.valid && password.valid ? '' : 'disabled'" >Войти</button>
+    </div>
+</div>
+
+<div class="lf-container" *ngIf="this.page=='register'">
+  <div class="form-group">
+
+    <input id="name" name="name" class="form-control"
+           required minlength="4" pattern="[a-zA-Z0-9 ]*"
+           ngModel
+           #name="ngModel" >
+
+  </div>
+  <div class="form-group"  *ngIf="!name.valid && name.touched">
+    <div class="alert alert-danger">Логин должен быть от 4 до 15 символов и может содержать только латинские буквы и цифры</div>
+  </div>
+  <div class="form-group">
+    <input required
+           pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}"
+           ngModel name="eml"
+           #eml="ngModel"
+           (change)="log(eml)"
+           id="eml"
+           type="email"
+           class="form-control"
+           placeholder="Email">
+
+  </div>
+  <div class="form-group" *ngIf="!eml.valid && eml.touched">
+    <div class="alert alert-danger">Введите корректный E-mail</div>
+  </div>
+
+    <div class="form-group">
+      <input  required
+              minlength="8"
+              maxlength="16"
+              pattern="[a-zA-Z0-9 ]*"
+              ngModel name="regPassword"
+              #regPassword="ngModel"
+              type="password"
+              id="regPassword"
+              class="form-control"
+              placeholder="Пароль">
+
+    </div>
+    <div class="form-group" *ngIf="!regPassword.valid && regPassword.touched">
+      <div class="alert alert-danger">Пароль должен быть от 8 до 15 символов и может содержать только латинские буквы и цифры</div>
+    </div>
+    <div class="form-group">
+      <input  required
+              minlength="8"
+              maxlength="16"
+              pattern="[a-zA-Z0-9 ]*"
+              ngModel
+              name="rePassword"
+              #rePassword="ngModel"
+              type="password"
+              id="rePassword"
+              class="form-control"
+              placeholder="Повторите Пароль">
+    </div>
+  <div class="form-group" *ngIf="regPassword.value !=rePassword.value && rePassword.touched">
+    <div class="alert alert-danger">Пароль должен быть от 8 до 15 символов и может содержать только латинские буквы и цифры</div>
+  </div>
+  <div class="form-group">
+    <label for="agree"  class="fcheck">
+      <input required
+             type="checkbox"
+             ngModel name="agree"
+             #agree="ngModel"
+             id="agree"
+              >
+      Согласен с лицензионными условиями и даю согласие на обработку персональных данных
+    </label>
+
+  </div>
+  <div class="form-group" *ngIf="!agree.valid && agree.touched">
+    <div class="alert alert-danger">
+        Необходимо согласиться с условиями использования сервиса
+    </div>
+  </div>
+    <div class="form-group">
+      <button class="btn btn-primary"
+              [disabled]="name.valid &&
+                          eml.valid &&
+                          regPassword.valid &&
+                          regPassword.value == rePassword.value &&
+                          agree.valid ? '' : 'disabled'"  >Зарегистрироваться</button>
+      <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+
+
+</div>
+</form>
+
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
