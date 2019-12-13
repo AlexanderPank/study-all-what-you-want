@@ -4,20 +4,20 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { AddElementFormComponent } from './add-element-form/add-element-form.component';
+
 import { MainFormComponent } from './main-form/main-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ExaminationFormComponent } from './examination-form/examination-form.component';
 import { CardComponent } from './elements/card.component';
-import {MainMenuItemComponent} from './elements/main-menu-item.component';
-import {LoginFormComponent} from './forms/login-form.component';
+import { MainMenuItemComponent} from './elements/main-menu-item.component';
+import { LoginFormComponent} from './forms/login-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    AddElementFormComponent,
+
     MainFormComponent,
     ExaminationFormComponent,
     CardComponent,
@@ -28,7 +28,6 @@ import {LoginFormComponent} from './forms/login-form.component';
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: MainFormComponent, data: {testTitle: 'Memorable Memory'}  },
-      { path: 'add-element/', component: AddElementFormComponent, data: {testTitle: '<< Назад'}  },
       { path: 'exam/:categoryId', component: ExaminationFormComponent, data: {testTitle: '<< Назад'}  },
       { path: 'login/:isRegister', component: LoginFormComponent, data: {testTitle: 'Memorable Memory'}  }
     ]),

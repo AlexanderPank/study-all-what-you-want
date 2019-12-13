@@ -1,30 +1,38 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-<h1 class="category-header">{{title}}</h1>
+<form  (ngSubmit)="onSubmit()">
+
 <div class="lf-container" *ngIf="this.page=='enter'">
+    <h1 class="category-header">Авторизация</h1>
     <div class="form-group">
-      <input required ngModel name="login" #login="ngModel" id="login" type="text" class="form-login" placeholder="Логин">
+      <input required [(ngModel)]="this.login" name="login" #loginx="ngModel"  id="login" type="text" class="form-login" placeholder="Логин">
     </div>
-  <div class="form-group"  *ngIf="!login.valid && login.touched">
+  <div class="form-group"  *ngIf="!loginx.valid && loginx.touched">
     <div class="alert alert-danger">Введите ваш логин</div>
   </div>
     <div class="form-group">
-      <input required ngModel name="password" #password="ngModel"  type="password" id="password" class="form-login" placeholder="Пароль">
+      <input required [(ngModel)]="this.password" name="password" #passwordx="ngModel"  type="password" id="password" class="form-login" placeholder="Пароль">
     </div>
-  <div class="form-group"  *ngIf="!password.valid && password.touched">
+  <div class="form-group"  *ngIf="!passwordx.valid && passwordx.touched">
     <div class="alert alert-danger">Введите ваш пароль</div>
   </div>
     <div class="form-group">
-      <button class="btn btn-primary" [disabled]="login.valid && password.valid ? '' : 'disabled'" >Войти</button>
+      <button class="btn btn-primary" [disabled]="loginx.valid && passwordx.valid ? '' : 'disabled'" >Войти</button>
     </div>
+  <div class="form-group">
+    <a (click)="this.updateUrl('register')">Зарегистрироваться</a>
+  </div>
 </div>
+
+
+
 
 <div class="lf-container" *ngIf="this.page=='register'">
   <div class="form-group">
-
+    <h1 class="category-header">Регистрация</h1>
     <input id="name" name="name" class="form-control"
            required minlength="4" pattern="[a-zA-Z0-9 ]*"
-           ngModel
-           #name="ngModel" >
+           [(ngModel)]="this.login"
+           #name="ngModel"
+           placeholder="Логин">
 
   </div>
   <div class="form-group"  *ngIf="!name.valid && name.touched">
@@ -33,9 +41,9 @@
   <div class="form-group">
     <input required
            pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}"
-           ngModel name="eml"
+           [(ngModel)]="this.email"
+           name="eml"
            #eml="ngModel"
-           (change)="log(eml)"
            id="eml"
            type="email"
            class="form-control"
@@ -51,7 +59,8 @@
               minlength="8"
               maxlength="16"
               pattern="[a-zA-Z0-9 ]*"
-              ngModel name="regPassword"
+              [(ngModel)]="this.password"
+              name="regPassword"
               #regPassword="ngModel"
               type="password"
               id="regPassword"
@@ -73,7 +82,7 @@
               type="password"
               id="rePassword"
               class="form-control"
-              placeholder="Повторите Пароль">
+              placeholder="Повторите пароль">
     </div>
   <div class="form-group" *ngIf="regPassword.value !=rePassword.value && rePassword.touched">
     <div class="alert alert-danger">Пароль должен быть от 8 до 15 символов и может содержать только латинские буквы и цифры</div>
@@ -108,5 +117,17 @@
 
 </div>
 </form>
+<div class="loading" *ngIf="loading" [ngClass]=" {loadingForm : authService.error}" >
 
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  <div *ngIf="authService.error; else GoLoading" class="alert alert-danger">
+    <div class="form-group "><p>{{authService.errorMessage}}</p></div>
+    <div class="form-group ">
+      <button class="btn btn-primary btn-ok" (click)="this.loading=false; authService.error='';" >Ок</button>
+    </div>
+  </div>
+
+  <ng-template #GoLoading>
+    <div class="form-group "><div class="lds-dual-ring"></div></div>
+  </ng-template>
+
+</div>

@@ -50,7 +50,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class MainMenuItemComponent implements OnInit {
 
   @Input() title : string = 'нет заголовка'
-  @Input() href : string = '/'
+  @Input() href : string = ''
   @Input() icon : string = ''
 
   @Output() selected = new EventEmitter();
@@ -62,7 +62,8 @@ export class MainMenuItemComponent implements OnInit {
   }
 
   onClick(ev) {
-    this.router.navigate([this.href]);
+    if (this.href!='')
+      this.router.navigate([this.href]);
     this.selected.emit()
   }
 
