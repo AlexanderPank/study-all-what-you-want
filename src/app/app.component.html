@@ -1,95 +1,133 @@
-<div class="root" #rootElement id="rootElement">
-  <div class="mainMenu" id="menuList">
-    <div class="menuList">
-      <div class="logo">
-        <img src="./../assets/images/logo-menu.png" width="230">
+<!--<div   id="rootElement" class="approot">
+ <div class="mainMenu" id="menuList">
+   <div class="menuList">
+     <div class="logo">
+       <img src="./../assets/images/logo-menu.png" width="230">
+     </div>
+
+     <div *ngIf="authSerivice.isLoggedIn();else notloggin">
+
+       <main-menu-item
+         [title]="'Добавить категорию'"
+         [href]="'category/add/0'"
+         [icon]="'fa-archive'"
+         (selected)="this.hideMainMenu()"
+       >
+       </main-menu-item>
+
+       <main-menu-item
+         [title]="'Редактор значений'"
+         [href]="'edit-value-list'"
+         [icon]="'fa-anchor'"
+         (selected)="this.hideMainMenu()"
+       >
+       </main-menu-item>
+
+       <main-menu-item
+         [title]="'Настройки'"
+         [href]="'settings'"
+         [icon]="'fa-cog'"
+         (selected)="this.hideMainMenu()"
+       >
+       </main-menu-item>
+
+       <main-menu-item
+         [title]="'О програме'"
+         [href]="'about'"
+         [icon]="'fa-star'"
+         (selected)="this.hideMainMenu()"
+       >
+       </main-menu-item>
+
+       <main-menu-item
+         [title]="'Выход'"
+         [href]=""
+         [icon]="'fa-sign-out'"
+         (selected)="authSerivice.logout();this.hideMainMenu()"
+
+       >
+       </main-menu-item>
       </div>
 
-      <div *ngIf="authSerivice.isLoggedIn();else notloggin">
+     <ng-template #notloggin>
+       <main-menu-item
+         [title]="'Home'"
+         [href]="'/'"
+         [icon]="'fa-star'"
+         (selected)="this.hideMainMenu()"
+       ></main-menu-item>
 
-        <main-menu-item
-          [title]="'Редактор категорий'"
-          [href]="'edit-category-list'"
-          [icon]="'fa-archive'"
-          (selected)="this.hideMainMenu()"
-        >
-        </main-menu-item>
+       <main-menu-item
+         [title]="'Регистрация'"
+         [href]="'login/register'"
+         [icon]="'fa-star'"
+         (selected)="this.hideMainMenu(); this.pageWasChanged('register')"
+       ></main-menu-item>
 
-        <main-menu-item
-          [title]="'Редактор значений'"
-          [href]="'edit-value-list'"
-          [icon]="'fa-anchor'"
-          (selected)="this.hideMainMenu()"
-        >
-        </main-menu-item>
-
-        <main-menu-item
-          [title]="'Настройки'"
-          [href]="'settings'"
-          [icon]="'fa-cog'"
-          (selected)="this.hideMainMenu()"
-        >
-        </main-menu-item>
-
-        <main-menu-item
-          [title]="'О програме'"
-          [href]="'about'"
-          [icon]="'fa-star'"
-          (selected)="this.hideMainMenu()"
-        >
-        </main-menu-item>
-
-        <main-menu-item
-          [title]="'Выход'"
-          [href]=""
-          [icon]="'fa-sign-out'"
-          (selected)="authSerivice.logout();this.hideMainMenu()"
-
-        >
-        </main-menu-item>
-       </div>
-
-      <ng-template #notloggin>
-        <main-menu-item
-          [title]="'Home'"
-          [href]="'/'"
-          [icon]="'fa-star'"
-          (selected)="this.hideMainMenu()"
-        ></main-menu-item>
-
-        <main-menu-item
-          [title]="'Регистрация'"
-          [href]="'login/register'"
-          [icon]="'fa-star'"
-          (selected)="this.hideMainMenu(); this.pageWasChanged('register')"
-        ></main-menu-item>
-
-        <main-menu-item
-          [title]="'О програме'"
-          [href]="'about'"
-          [icon]="'fa-star'"
-          (selected)="this.hideMainMenu()"
-        >
-        </main-menu-item>
-        <main-menu-item
-          [title]="'Войти'"
-          [href]="'login/enter'"
-          [icon]="'fa-sign-out'"
-          (selected)="this.hideMainMenu(); this.pageWasChanged('enter')"
-        ></main-menu-item>
-      </ng-template>
+       <main-menu-item
+         [title]="'О програме'"
+         [href]="'about'"
+         [icon]="'fa-star'"
+         (selected)="this.hideMainMenu()"
+       >
+       </main-menu-item>
+       <main-menu-item
+         [title]="'Войти'"
+         [href]="'login/enter'"
+         [icon]="'fa-sign-out'"
+         (selected)="this.hideMainMenu(); this.pageWasChanged('enter')"
+       ></main-menu-item>
+     </ng-template>
 
 
+   </div>
+ </div>
+
+ <div id="container">
+   <app-top-bar (menuState)="this.changeMainMenuState()"></app-top-bar>
+   <div class="mask-content" #maskContent id="maskContent"></div>
+   <div class="container padding16" >
+     <router-outlet ></router-outlet>
+   </div>
+ </div>
+ <div class="footer"></div>
+
+
+
+ <div *ngIf="authSerivice.isLoggedIn();else notloggin">
+
+   <div *ngIf="showMenu">
+     <app-top-bar></app-top-bar>
+   </div>
+
+   <router-outlet ></router-outlet>
+
+ </div>
+
+ <ng-template #notloggin>
+   <app-form-login></app-form-login>
+ </ng-template>
+
+</div>
+
+--->
+
+<div class="main-screen-view">
+
+  <div *ngIf="authSerivice.isLoggedIn();else notloggin">
+
+    <router-outlet ></router-outlet>
+
+    <div *ngIf="showMenu">
+      <app-bottom-bar></app-bottom-bar>
     </div>
 
   </div>
 
-  <div id="container">
-    <app-top-bar (menuState)="this.changeMainMenuState()"></app-top-bar>
-    <div class="mask-content" #maskContent id="maskContent"></div>
-    <div class="container padding16" >
-      <router-outlet ></router-outlet>
-    </div>
-  </div>
-  <div class="footer"></div>
+
+  <ng-template #notloggin>
+    <router-outlet ></router-outlet>
+  </ng-template>
+
+
 </div>

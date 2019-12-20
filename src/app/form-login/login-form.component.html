@@ -1,33 +1,34 @@
-<form  (ngSubmit)="onSubmit()">
 
-<div class="lf-container" *ngIf="this.page=='enter'">
-    <h1 class="category-header">Авторизация</h1>
+<form  (ngSubmit)="onSubmit(thisForm)" #thisForm="ngForm">
+
+<div  class="form-container" *ngIf="this.page=='enter'">
+    <h1 class="tegH1">Авторизация</h1>
     <div class="form-group">
       <input required [(ngModel)]="this.login" name="login" #loginx="ngModel"  id="login" type="text" class="form-login" placeholder="Логин">
     </div>
   <div class="form-group"  *ngIf="!loginx.valid && loginx.touched">
-    <div class="alert alert-danger">Введите ваш логин</div>
+    <div class="alert">Введите ваш логин</div>
   </div>
     <div class="form-group">
       <input required [(ngModel)]="this.password" name="password" #passwordx="ngModel"  type="password" id="password" class="form-login" placeholder="Пароль">
     </div>
   <div class="form-group"  *ngIf="!passwordx.valid && passwordx.touched">
-    <div class="alert alert-danger">Введите ваш пароль</div>
+    <div class="alert">Введите ваш пароль</div>
   </div>
     <div class="form-group">
-      <button class="btn btn-primary" [disabled]="loginx.valid && passwordx.valid ? '' : 'disabled'" >Войти</button>
+      <button [disabled]="!thisForm.valid" >Войти</button>
     </div>
   <div class="form-group">
-    <a (click)="this.updateUrl('register')">Зарегистрироваться</a>
+    <a (click)="this.updateUrl('register')" class="subLink">Зарегистрироваться ...</a>
   </div>
 </div>
 
 
 
 
-<div class="lf-container" *ngIf="this.page=='register'">
+<div  class="form-container" *ngIf="this.page=='register'">
   <div class="form-group">
-    <h1 class="category-header">Регистрация</h1>
+    <h1 class="tegH1">Регистрация</h1>
     <input id="name" name="name" class="form-control"
            required minlength="4" pattern="[a-zA-Z0-9 ]*"
            [(ngModel)]="this.login"
@@ -114,10 +115,17 @@
       <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
     </div>
 
+  <div class="form-group">
+    <a (click)="this.updateUrl('enter')" class="subLink">Войти ...</a>
+  </div>
+
 
 </div>
+
+
 </form>
-<div class="loading" *ngIf="loading" [ngClass]=" {loadingForm : authService.error}" >
+
+<div class="form-container loading" *ngIf="loading" [ngClass]=" {loadingForm : authService.error}" >
 
   <div *ngIf="authService.error; else GoLoading" class="alert alert-danger">
     <div class="form-group "><p>{{authService.errorMessage}}</p></div>

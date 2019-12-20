@@ -1,124 +1,364 @@
 /* You can add global styles to this file, and also import other style files */
-
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('./fonts/fonts/fontawesome-webfont.eot?v=4.7.0');
-  src: url('./fonts/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
-       url('./fonts/fonts/fontawesome-webfont.woff2') format('woff2'),
-       url('./fonts/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
-       url('./fonts/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
-       url('./fonts/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+@import "bootstrap.css";
+@import "./fonts/css/all.min.css";
 
 
-
-.fa {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.fa-cloud:before {
-  content: "\f0c2";
-}
-
-.fa-cog:before {
-  content: "\f013";
-}
-
-.fa-archive:before {
-  content: "\f187";
-}
-
-.fa-anchor:before {
-  content: "\f13d";
-}
-
-.fa-star:before {
-  content: "\f005";
-}
-
-.fa-life-ring:before {
-  content: "\f1cd";
-}
-
-
-.fa-sign-out:before {
-  content: "\f08b";
-}
-
-.fa-sign-in:before {
-  content: "\f090";
-}
 
 body{
   background: #ffffff;
-  margin: 5px auto;
+  margin: 0px auto;
 }
 
-.root{
-  padding-top: 30px;
-  max-height: 500px;
-  overflow: auto;
-  background-color: #f2f2f2;
-
-}
-#container{
-
-  padding-bottom: 10px;
-  max-height: 480px;
-  overflow: auto;
-}
-#container::-webkit-scrollbar,
-#rootElement::-webkit-scrollbar
-{
-  display: none;
-}
-
-
-.padding16{
-  padding: 16px;
-}
-
-.container{
-  min-height: 600px;
-}
-
-.mainMenu{
+.main-screen-view{
   position: absolute;
-  top:62px;
-  width: 0px;
-  height: 100px;
-  max-width: 320px;
-  background: #fefefe;
-  border: 1px solid #ddd;
-  margin-right: 0px;
+  top: 0;
+  left:0;
+  right: 0;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  margin: 0 auto;
+  border-left: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
+}
+.main-container{
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  margin: 0 auto;
+  height: calc(100% - 60px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-scroll-snap-type: none;
+  scroll-snap-type: none;
+  padding: 10px 10px;
+}
 
-  -webkit-transition: width 0.5s;
-  -moz-transition: width 0.5s;
-  transition: width 0.5s;
-  /* определяем цвет фона панели */
+.main-bottom-menu{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  padding: 10px 0px;
+  -webkit-box-shadow: 0px -1px 3px 0px rgba(50, 50, 50, 0.32);
+  -moz-box-shadow:    0px -1px 3px 0px rgba(50, 50, 50, 0.32);
+  box-shadow:         0px -1px 3px 0px rgba(50, 50, 50, 0.32);
+}
 
-  overflow: hidden;
-  /* поверх других элементов */
-  z-index: 2000;
-  opacity: 0;
-
+.top-menu{
+  position: absolute;
+  top: 0;
+  left:0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  padding: 0px 10px;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(50, 50, 50, 0.32);
+  -moz-box-shadow:    0px 1px 3px 0px rgba(50, 50, 50, 0.32);
+  box-shadow:         0px 1px 3px 0px rgba(50, 50, 50, 0.32);
 }
 
 
+.scrollbar
+{
+  margin-left: 30px;
+  float: left;
+  background: transparent;
+  overflow-y: scroll;
+}
 
-.logo{
+
+.scrollbar-style-3::-webkit-scrollbar-track
+{
+
+  background-color: #F5F5F5;
+}
+
+.scrollbar-style-3::-webkit-scrollbar
+{
+  width: 6px;
+  height: 20px;
+  background-color: #ffffff;
+}
+
+.scrollbar-style-3::-webkit-scrollbar-thumb
+{
+  background-color: #c6d4e1;
+}
+
+h1.center{text-align: center; color: #1976d2; }
+
+.align-text-center{
   text-align: center;
-  padding-top: 15px;
-  padding-bottom: 30px;
 }
 
+.approot{
+  border: 1px solid #ccc;
+  min-height: 100px;
+}
+
+.fa-style-bold{
+  font-weight: bold !important;
+}
+
+.fa-style-normal{
+  font-weight: normal !important;
+}
+
+.bgGreen{
+  background-color: #a8dba8 !important;
+}
+
+.bgYellow{
+  background-color: #fff2bc !important;
+}
+
+.bgBlue{
+  background-color: #c6d4e1 !important;
+}
+
+
+.tegH1{
+  text-align: center;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: -39px;
+  text-transform: uppercase;
+  border-bottom: 2px #c6d4e1 dotted;
+  padding-bottom: 15px;
+}
+
+/********************************* BAR   ******************************************/
+.bar{
+
+
+  font-size: 1.8rem;
+  }
+
+.bar .fa-style-bold{
+  font-size: 2rem;
+}
+
+.bar .fab,.bar .fa {
+  color: #386db3;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.57);
+
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+.bar .fab{
+  font-size: 2.2rem;
+}
+.bar .fab:hover, .bar .fa:hover{
+  color: #28548e;
+}
+
+.bar a{
+  cursor: pointer;
+}
+/*************************** Category-List ********************************/
+.mButtonAdd{
+  font-size: 40px;
+  color: #28548e;
+  position: absolute;
+  top:-3px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.mButtonAdd span{
+  position: absolute;
+  margin-left: -25px;
+  top: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: verdana;
+}
+
+.top-menu
+{
+  background: #28548e;
+}
+.categories-body{
+  border: 1px #eee solid;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.categories-body .category-header{
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1b1e21;
+}
+
+.categories-body .cnt{
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: normal;
+
+}
+
+.categories-body .UpDownButton{
+  max-width: 30px;
+  max-height: 30px;
+  width: 30px;
+  height: 30px;
+  background: #eee;
+  color: black;
+  border-radius: 15px;
+  border: 1px solid #888;
+  box-shadow: unset;
+  display: block;
+  font-size: 1.3rem;
+  color: #777;
+  padding-left: 7px;
+  float: right;
+  cursor: pointer;
+}
+
+.UpDownButton .fa-angle-up{
+  margin-top: -5px;
+  position: absolute;
+  top: 10px;
+}
+
+.UpDownButton .fa-angle-down{
+  margin-top: -5px;
+  position: absolute;
+  top: 12px;
+}
+
+.categories-body .hrefGreen,
+.categories-body .hrefRed{
+  font-style: italic;
+  color: #59ad59;
+  border-bottom: 1px dotted;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.categories-body .hrefGreen:hover,
+.categories-body .hrefRed:hover{
+  text-decoration: none;
+  border: none;
+}
+.categories-body .hrefRed{
+  color: #b34444;
+}
+  /**************************************************************************************/
+.form-container {
+  margin-top: 30px;
+  text-align: center;
+}
+.form-container .tegH1{
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+.form-container input,
+.form-container textarea{
+  display: block; margin: 0 auto; margin-bottom: 30px;  width: 100%;
+  color: #666;
+  box-shadow: unset;
+  background: #f9f9ff;
+}
+.form-container textarea {height: 200px}
+
+.form-container button{
+  box-shadow: unset;
+  border-radius: 5px !important;
+  font-family: Consolas;
+  color: #1976d2;
+  font-size: 1.1rem;
+}
+
+.form-container button:disabled {color: #6666 !important;}
+.form-container button:hover{
+  color: #6996d2;
+}
+
+.form-container .alarm{
+  color: #e45454;
+  margin-top: -20px;
+  font-size: 13px;
+  line-height: 10px;
+  font-style: italic;
+  text-align: left;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form-container .has-error
+{ border-color: #deb4b4}
+
+
+
+
+.form-container .form-group{
+  width: 75%; ;
+  margin: 0 auto;
+}
+
+.form-container .subLink{
+  padding-top: 20px;
+  font-style: italic;
+  color: #1c7430;
+  border-bottom: dotted 1px;
+  display: inline-block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.form-container .form-group .divLabel{
+  text-align: justify;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-container .buttonYes{
+  background: #78ea8b;
+  color: #0e671d;
+  border: unset;
+  width: 140px;
+}
+
+.form-container .buttonNo{
+  background: #ea7878;
+  color: #670e0e;
+  border: unset;
+  width: 140px;
+}
+
+.form-container .buttonNo:hover,
+.form-container .buttonYes:hover{
+  box-shadow: 1px 1px 3px #9999;
+}
+
+.form-container .alertH4{
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.form-container .ask{
+  position: absolute;
+  background: #fff;
+  left: 20px;
+  right: 20px;
+  border: 1px solid #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 5px #ccc;
+}
 
 /**
  * Переключаемая боковая панель навигации
@@ -139,26 +379,22 @@ body{
 }
 
 
+input,textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  position: relative;
+  margin: 0;
+  width: 250px;
+  padding: 6px 20px 7px 20px;
+  outline: none;
+  color: #999;
+  background: #ececec;
+  border: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d8d8d8;
+  border-radius: 3px;
+}
 
-
-
-
-
-
-input {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.2rem;
-    position: relative; margin: 0;
-    width: 250px;
-    padding: 6px 20px 7px 20px;
-    outline:none; color: #999;
-    background: #ececec; border: 1px solid #d2d2d2;
-    border-bottom: 1px solid #d8d8d8; border-radius: 3px;
-    -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07);
-    -moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07);
-    -o-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07);
-    box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 0px 6px rgba(0,0,0,0.07);}
-
-input:focus {background: #fcfcfc; color: #666; border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8;}
+input:focus, textarea:focus {background: #fcfcfc; color: #666; border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8;}
 
 
 button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -176,11 +412,11 @@ button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -o-box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.57);
   box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.57);}
 
-button:hover {color: #888; text-shadow: 0px 1px 0px rgba(255,255,255,0.69); -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.75); -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.75); -o-box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.75); box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.75);}
+button:hover { color: #8f8f8f; text-shadow: 0px 1px 0px rgba(255,255,255,0.69); border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8;}
 
-button:active {color: #696969; text-shadow: 0px 1px 0px rgba(255,255,255,0.53); border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8; border-radius: 3px; -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20); -moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20); -o-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20); box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20);}
+button:active { text-shadow: 0px 1px 0px rgba(255,255,255,0.53); border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8;}
 
-button:disabled {color: #a0a0a0; text-shadow: 0px 1px 0px rgba(255,255,255,0.53); border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8; border-radius: 3px; -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20); -moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20); -o-box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20); box-shadow: 0px 1px 0px rgba(255,255,255,0.58), inset 0px 1px 6px rgba(0,0,0,0.07), inset 0px -15px 14px rgba(255,255,255,0.20);}
+button:disabled {color: #a0a0a0; text-shadow: 0px 1px 0px rgba(255,255,255,0.53); border: 1px solid #d2d2d2; border-bottom: 1px solid #d8d8d8; border-radius: 3px;}
 
 
 /* Start Checkboxes */
@@ -238,4 +474,101 @@ Download URL: http://icondeposit.com
 */
 
 
+.mButton{
 
+  font-weight: 600;
+  color: #111;
+  font-family: verdana;
+  box-shadow: unset;
+  -o-box-shadow: unset;
+  border: unset;
+}
+
+.mButton:hover {
+  box-shadow: unset;
+  -o-box-shadow: unset;
+
+}
+
+.mButtonYellow{
+  background-color: #fff7ac;
+}
+
+.mButtonBlue{
+  background-color: #c0e5ff;
+}
+
+.mButtonRed{
+  background-color: #c97c7e;
+}
+
+
+p {
+  font-family: Lato;
+}
+
+
+/********************* Top Bar **************************/
+
+
+h1{
+  margin: 0;
+  margin-top: -5px;
+}
+
+.buttonMenu{
+  position: absolute;
+  top: 10px;
+  font-size: 30px;
+  width: 30px;
+  padding: 10px;
+  margin: -10px;
+  right: 20px;
+  cursor: pointer;
+
+}
+
+a{ color: #fff; text-decoration: none}
+
+
+app-top-bar h1 {
+  color: white;
+  margin: 0;
+}
+
+
+#lines{
+  border-bottom: 17px double black;
+  border-top: 6px solid black;
+  content:"";
+  height: 5px;
+  width:30px;
+}
+
+.content-main-page{
+  padding-top: 1rem ;
+  padding-bottom: 1rem ;
+}
+
+.menuItem{
+  margin: 1.5rem;
+  height: 50px;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  padding: 5px;
+  background: #6996d2;
+  box-shadow: 2px 2px 5px #6996d2;
+  cursor: pointer;
+  color:#fff;
+}
+
+.menuItem:active{
+  box-shadow: unset;
+  border-top: 2px solid #fff;
+  border-left:  2px solid #fff;
+  border-bottom: 0px solid #fff;
+  border-right:  0px solid #fff;
+  padding: 6px;
+  height: 48px;
+
+}

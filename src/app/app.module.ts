@@ -3,38 +3,50 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
 
-import { MainFormComponent } from './main-form/main-form.component';
+import { MainComponent } from './screens/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ExaminationFormComponent } from './examination-form/examination-form.component';
-import { CardComponent } from './elements/card.component';
+import { CategoryDetailsComponent } from './screens/category-details.component';
 import { MainMenuItemComponent} from './elements/main-menu-item.component';
-import { LoginFormComponent} from './forms/login-form.component';
+import { LoginFormComponent} from './form-login/login-form.component';
+import { CategoryFormComponent } from './form-category/category-form.component';
+import { ViewDefinitionComponent } from './view-definition/view-definition.component';
+import { LongPressDirective } from './_directives/long-press.directive';
+import {CategoryService} from './_services/categorys.service';
+import {CategoryListComponent} from './screens/category-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent,
+    BottomBarComponent,
 
-    MainFormComponent,
+    MainComponent,
     ExaminationFormComponent,
-    CardComponent,
+    CategoryDetailsComponent,
     MainMenuItemComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    CategoryFormComponent,
+    ViewDefinitionComponent,
+    LongPressDirective,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      { path: '', component: MainFormComponent, data: {testTitle: 'Memorable Memory'}  },
-      { path: 'exam/:categoryId', component: ExaminationFormComponent, data: {testTitle: '<< Назад'}  },
-      { path: 'login/:isRegister', component: LoginFormComponent, data: {testTitle: 'Memorable Memory'}  }
+      { path: '', component: MainComponent},
+      { path: 'categories', component: CategoryListComponent},
+      { path: 'category/view/:id', component: CategoryDetailsComponent},
+      { path: 'exam/:categoryId', component: ExaminationFormComponent },
+      { path: 'login/:isRegister', component: LoginFormComponent},
+      { path: 'category/:stateForm/:id', component: CategoryFormComponent }
     ]),
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
