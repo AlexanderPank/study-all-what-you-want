@@ -1,0 +1,75 @@
+<div class="container" *ngIf="editCategoriesList;else showInMainPage">
+  <div class="row d-flex justify-content-between" (click)="isShowDetail=!isShowDetail">
+    <div class="col-10" style="cursor: pointer">
+      <span class="category-header">{{definition.name}} </span><sup class="cnt">({{ countValues}})</sup>
+    </div>
+    <div class="col-2">
+            <span class="UpDownButton">
+               <i class="fa" style="margin-top: -5px" [ngClass]="isShowDetail ?   'fa-angle-up' : 'fa-angle-down'"></i>
+            </span>
+    </div>
+  </div>
+
+  <div *ngIf="isShowDetail">
+    <div class="row" (click)="isShowDetail=!isShowDetail">
+      <div class="col" style="cursor: pointer">
+        <div class="description">{{definition.value}}</div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col"></div>
+      <div class="col-3">
+        <a routerLink="/items/{{definition.category_id}}/edit/{{definition.id}}" class="hrefGreen">Изменить</a>
+      </div>
+      <div class="col"></div>
+      <div class="col-3">
+        <a routerLink="/items/{{definition.category_id}}/delete/{{definition.id}}" class="hrefRed">Удалить</a>
+      </div>
+      <div class="col"></div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #showInMainPage>
+  <div class="container">
+    <div class="row d-flex justify-content-between">
+      <div class="col-10" style="cursor: pointer"
+           (click)="onClick(category.id)"
+           LongPress
+           (longPress)="enterInEditMode($event, category.id)"
+      >
+        <span class="category-header">{{category.title}} </span><sup class="cnt" >({{category.countElement}})</sup>
+      </div>
+      <div class="col-2"  >
+            <span class="UpDownButton"
+                  (click)="isShowDetail=!isShowDetail"
+            ><i class="fa" style="margin-top: -5px" [ngClass]="isShowDetail ?   'fa-angle-up' : 'fa-angle-down'" ></i></span>
+      </div>
+    </div>
+
+    <div *ngIf="isShowDetail">
+      <div class="row">
+        <div class="col" style="cursor: pointer"
+             (click)="onClick(category.id)"
+             LongPress
+             (longPress)="enterInEditMode($event, category.id)"
+        >
+          <div class="description">{{category.description}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-3">
+          <a routerLink="categories/edit/{{category.id}}}" class="hrefGreen">Изменить 1</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+          <a routerLink="categories/delete/{{category.id}}}" class="hrefRed">Удалить</a>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>

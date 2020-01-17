@@ -1,7 +1,8 @@
-  <div class="container" *ngIf="editCategoriesList;else showInMainPage">
-    <div class="row d-flex justify-content-between"  (click)="isShowDetail=!isShowDetail">
+  <div class="container" *ngIf="editCategoriesList;else showInMainPage"
+       >
+    <div class="row d-flex justify-content-between"  (click)="showDetail(category.id)">
       <div class="col-10" style="cursor: pointer" >
-        <span class="category-header">{{category.title}} </span><sup class="cnt" >({{category.countElement}})</sup>
+        <span class="category-header">{{category.title}} </span><sup class="cnt" >({{getCountItems()}})</sup>
       </div>
       <div class="col-2"  >
             <span class="UpDownButton">
@@ -10,18 +11,21 @@
       </div>
     </div>
 
-    <div *ngIf="isShowDetail">
-      <div class="row"  (click)="isShowDetail=!isShowDetail">
+    <div *ngIf="isShowDetail" >
+      <div class="row"  (click)="isShowDetail=!isShowDetail;">
       <div class="col" style="cursor: pointer">
         <div class="description">{{category.description}}</div>
       </div>
       </div>
       <div class="row">
+        <div class="col-3">
+          <a routerLink="/items/{{category.id}}" class="hrefNavy">Карточки</a>
+        </div>
         <div class="col"></div>
         <div class="col-3">
           <a routerLink="/category/edit/{{category.id}}" class="hrefGreen">Изменить</a>
         </div>
-        <div class="col-2"></div>
+        <div class="col"></div>
         <div class="col-3">
           <a routerLink="/category/delete/{{category.id}}" class="hrefRed">Удалить</a>
         </div>
@@ -32,43 +36,28 @@
 
 
 <ng-template #showInMainPage>
-  <div class="container">
+  <div class="container"
+       (click)="goToExame(category.id)"
+       LongPress
+       (longPress)="enterInEditMode($event, category.id)"
+       style="cursor: pointer"
+  >
+    <div><i class="cnt" >{{getExemInfo()}}</i></div>
     <div class="row d-flex justify-content-between">
       <div class="col-10" style="cursor: pointer"
-           (click)="onClick(category.id)"
-           LongPress
-           (longPress)="enterInEditMode($event, category.id)"
+
       >
-        <span class="category-header">{{category.title}} </span><sup class="cnt" >({{category.countElement}})</sup>
+        <span class="category-header" >{{category.title}} </span>
+        <i class="deck-description">&nbsp; {{category.description}}</i>
       </div>
       <div class="col-2"  >
             <span class="UpDownButton"
-                  (click)="isShowDetail=!isShowDetail"
-            ><i class="fa" style="margin-top: -5px" [ngClass]="isShowDetail ?   'fa-angle-up' : 'fa-angle-down'" ></i></span>
+                  (click)="goToExame(category.id)"
+            ><i class="fa fa-angle-right" style="margin-top: -5px"  ></i></span>
       </div>
     </div>
+    <div><i class="cnt" >&nbsp;</i></div>
 
-    <div *ngIf="isShowDetail">
-      <div class="row">
-        <div class="col" style="cursor: pointer"
-             (click)="onClick(category.id)"
-             LongPress
-             (longPress)="enterInEditMode($event, category.id)"
-        >
-          <div class="description">{{category.description}}</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col"></div>
-        <div class="col-3">
-          <a routerLink="categories/edit/{{category.id}}}" class="hrefGreen">Изменить</a>
-        </div>
-        <div class="col-2"></div>
-        <div class="col-3">
-          <a routerLink="categories/delete/{{category.id}}}" class="hrefRed">Удалить</a>
-        </div>
-        <div class="col"></div>
-      </div>
-    </div>
+
   </div>
 </ng-template>

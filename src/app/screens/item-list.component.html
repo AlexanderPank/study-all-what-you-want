@@ -1,0 +1,21 @@
+
+<div class="main-container scrollbar-style-3 scrollbar category-list"
+     style="padding-top: 60px"
+>
+
+  <div class="twoHeaders">
+    <h1 class="tegH1">{{ categoryTitle }}</h1>
+    <h4 class="tegH4">Список карточек</h4>
+  </div>
+  <div class="div-add">
+    <i class="plus-circle" (click)="addNewItem()">+</i>
+  </div>
+
+  <div *ngFor="let items of serviceCategories.getItemList(categoryId);" class="categories-body">
+    <app-definition
+      [definition]="items"
+      [editCategoriesList] = "true"
+    ></app-definition>
+
+  </div>
+</div>

@@ -67,7 +67,7 @@ body{
 
 .scrollbar
 {
-  margin-left: 30px;
+  /* margin-left: 30px; */
   float: left;
   background: transparent;
   overflow-y: scroll;
@@ -124,7 +124,7 @@ h1.center{text-align: center; color: #1976d2; }
 }
 
 
-.tegH1{
+.tegH1, .tegH4{
   text-align: center;
   color: #333;
   font-size: 1.3rem;
@@ -133,6 +133,21 @@ h1.center{text-align: center; color: #1976d2; }
   text-transform: uppercase;
   border-bottom: 2px #c6d4e1 dotted;
   padding-bottom: 15px;
+}
+
+
+.tegH4{
+  text-transform:lowercase;
+  margin-top: -35px;
+  font-size: 18px;
+  font-style: italic;
+  border: unset;
+  color: #005cbf;
+}
+
+.twoHeaders .tegH1{
+  margin-top: -59px;
+  padding-bottom: 25px;
 }
 
 /********************************* BAR   ******************************************/
@@ -146,7 +161,7 @@ h1.center{text-align: center; color: #1976d2; }
   font-size: 2rem;
 }
 
-.bar .fab,.bar .fa {
+.bar .fab,.bar .fa,.bar .fas {
   color: #386db3;
   box-shadow: 0px 2px 2px rgba(0,0,0,0.027), inset 0px 1px 0px rgba(255,255,255,0.69), inset 0px -1px 0px rgba(0,0,0,0.0187), inset 0px 15px 14px rgba(255,255,255,0.57);
 
@@ -156,7 +171,13 @@ h1.center{text-align: center; color: #1976d2; }
 .bar .fab{
   font-size: 2.2rem;
 }
-.bar .fab:hover, .bar .fa:hover{
+
+.bar .fas{
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.bar .fab:hover, .bar .fa:hover, .bar .fas:hover{
   color: #28548e;
 }
 
@@ -197,7 +218,7 @@ h1.center{text-align: center; color: #1976d2; }
 .categories-body .category-header{
   font-size: 1rem;
   font-weight: 600;
-  color: #1b1e21;
+  color: #284d7d;
 }
 
 .categories-body .cnt{
@@ -225,6 +246,12 @@ h1.center{text-align: center; color: #1976d2; }
   cursor: pointer;
 }
 
+.UpDownButton .fa-angle-right {
+  margin-left: 3px;
+  margin-top: 5px !important;
+  display: flex;
+}
+
 .UpDownButton .fa-angle-up{
   margin-top: -5px;
   position: absolute;
@@ -237,7 +264,14 @@ h1.center{text-align: center; color: #1976d2; }
   top: 12px;
 }
 
+.activeDeck{
+  background-color: #f1f8ff;
+  border: 1px solid #b7d7f5;
+  box-shadow: 3px 3px 5px #eee;
+}
+
 .categories-body .hrefGreen,
+.categories-body .hrefNavy,
 .categories-body .hrefRed{
   font-style: italic;
   color: #59ad59;
@@ -247,12 +281,17 @@ h1.center{text-align: center; color: #1976d2; }
 }
 
 .categories-body .hrefGreen:hover,
+.categories-body .hrefNavy:hover,
 .categories-body .hrefRed:hover{
   text-decoration: none;
   border: none;
 }
 .categories-body .hrefRed{
   color: #b34444;
+}
+
+.categories-body .hrefNavy{
+  color: #886fc5;;
 }
   /**************************************************************************************/
 .form-container {
@@ -263,6 +302,14 @@ h1.center{text-align: center; color: #1976d2; }
   margin-top: -10px;
   margin-bottom: 20px;
 }
+
+.form-container .tegH1 span{
+  font-size: 14px;
+  color: #0e6ea7;
+}
+
+
+
 .form-container input,
 .form-container textarea{
   display: block; margin: 0 auto; margin-bottom: 30px;  width: 100%;
@@ -358,6 +405,7 @@ h1.center{text-align: center; color: #1976d2; }
   padding: 20px;
   border-radius: 10px;
   box-shadow: 2px 3px 5px #ccc;
+  z-index: 1000;
 }
 
 /**
@@ -490,6 +538,92 @@ Download URL: http://icondeposit.com
 
 }
 
+.twoButton{
+  width: 170px;
+}
+
+.twoButton.cancel{
+  color:#721c24;
+}
+.twoButton.cancel:hover{
+  color:#470e0e;
+  text-shadow: 2px 2px 2px #ffffff;
+}
+
+.div-add, .div-add-menu{
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  background: unset;
+  width: auto;
+  height: auto;
+  z-index: 2000;
+
+}
+
+.div-add-menu{
+  text-align: right;
+}
+.div-add-menu .plus-circle{
+  color: #ddecff;
+
+}
+
+.plus-circle, .plus-circle-mid{
+  text-align: left;
+  font-size: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  background: #005cbf;
+  border-radius: 30px;
+  color: #fff;
+  font-family: monospace;
+  text-transform: none;
+  text-decoration: none;
+  font-style: normal;
+  box-shadow: 0px 0px 10px #aaa;
+  cursor: pointer;
+}
+
+.plus-circle-mid{
+  font-size: 18px;
+  padding: 7px;
+  padding-left: 11px;
+  margin-bottom: 22px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #1a76d8;
+  float: right;
+  display: block;
+}
+
+.plus-text-i{
+  display: inline-block;
+  margin-top: 8px;
+  margin-right: 10px;
+  font-weight: 500;
+  color: #1a76d8;
+  text-shadow: 5px 5px 5px #ffffff;
+  cursor: pointer;
+}
+.menu-row{
+  background: rgb(255, 255, 255);
+  padding: 5px;
+  display: block;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-left: 20px;
+  /* border: 2px solid #eee; */
+  cursor: pointer;
+  opacity: 0.8;
+}
+.plus-circle:hover, .plus-circle-mid:hover, .plus-text-i:hover{
+  box-shadow: none;
+  text-shadow:unset;
+}
 .mButtonYellow{
   background-color: #fff7ac;
 }
